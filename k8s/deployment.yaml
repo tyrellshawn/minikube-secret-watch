@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-watcher-app
+  namespace: secret-watch-demo
+  labels:
+    app: secret-watcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secret-watcher
+  template:
+    metadata:
+      labels:
+        app: secret-watcher
+    spec:
+      containers:
+      - name: watcher
+        image: your-dockerhub-username/secret-watcher:latest # <-- CHANGE THIS
+        imagePullPolicy: Always # For testing, change to IfNotPresent if using minikube docker-env
+        env:
+        - name: SECRET_NAMESPACE
+          value: "secret-watch-demo"
+        - name: SECRET_NAME
+          value: "my-app-secret"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+          requests:
+            memory: "64Mi"
+            cpu: "50m"

@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Minikube and Deploy",
+            "type": "shell",
+            "command": "make start",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Docker Image (Minikube)",
+            "type": "shell",
+            "command": "make build",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Push to Docker Hub",
+            "type": "shell",
+            "command": "make build-dockerhub",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "View Application Logs",
+            "type": "shell",
+            "command": "make logs",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Port Forward ArgoCD UI",
+            "type": "shell",
+            "command": "make port-forward",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Get ArgoCD Password",
+            "type": "shell",
+            "command": "make argocd-password",
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean Up Resources",
+            "type": "shell",
+            "command": "make clean",
+            "problemMatcher": []
+        }
+    ]
+}

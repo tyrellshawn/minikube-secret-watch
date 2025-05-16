@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: secret-watcher-demo-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # Use local path for testing
+    repoURL: https://kubernetes.default.svc
+    path: /home/tyrellshawn/kubernetes/minikube-secret-watch/k8s
+    targetRevision: ""
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: secret-watch-demo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
