@@ -15,10 +15,11 @@ spec:
       labels:
         app: secret-watcher
     spec:
+      serviceAccountName: secret-watcher
       containers:
       - name: watcher
-        image: your-dockerhub-username/secret-watcher:latest # <-- CHANGE THIS
-        imagePullPolicy: Always # For testing, change to IfNotPresent if using minikube docker-env
+        image: secret-watcher:latest
+        imagePullPolicy: Never
         env:
         - name: SECRET_NAMESPACE
           value: "secret-watch-demo"
