@@ -6,10 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    # Use local path for testing
-    repoURL: https://kubernetes.default.svc
-    path: /home/tyrellshawn/kubernetes/minikube-secret-watch/k8s
-    targetRevision: ""
+    repoURL: https://github.com/tyrellshawn/minikube-secret-watch.git
+    path: k8s
+    targetRevision: master
   destination:
     server: https://kubernetes.default.svc
     namespace: secret-watch-demo
